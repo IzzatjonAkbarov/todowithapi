@@ -49,9 +49,11 @@ lists.addEventListener("click", (e) => {
     deletefunc(e.target.id);
   }
   if (e.target.classList.contains("btn2")) {
+    editdata(e.target.id);
+
     // btn.textContent = "Edit";
     currentid = e.target.id;
-    editdata(e.target.id);
+
     // const list =
     //   e.target.closest("div").previousElementSibling.previousElementSibling
     //     .textContent;
@@ -96,9 +98,13 @@ function getTime() {
 }
 
 function editdata(id) {
+  let promwefwept = prompt("write something");
   fetch(`${api}/${id}`, {
     method: "PUT",
-    body: JSON.stringify({ title: "changed to new data", edittime: getTime() }),
+    body: JSON.stringify({
+      title: promwefwept,
+      edittime: getTime(),
+    }),
     headers: { "Content-Type": "application/json" },
   }).then(() => fechfunc());
 }
